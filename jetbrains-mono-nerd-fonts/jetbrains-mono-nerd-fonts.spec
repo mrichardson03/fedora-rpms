@@ -5,7 +5,7 @@ Summary:        JetBrainsMono Nerd Fonts
 
 License:        OFL-1.1
 URL:            https://github.com/ryanoasis/nerd-fonts
-Source0:        %{url}/archive/v%{version}/JetBrainsMono.tar.xz
+Source0:        %{url}/releases/download/v%{version}/JetBrainsMono.tar.xz
 
 BuildArch:      noarch
 Requires:       fontpackages-filesystem
