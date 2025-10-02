@@ -1,37 +1,30 @@
 %global debug_package %{nil}
 
 Name:           terraform-docs
+# renovate: datasource=github-releases depName=terraform-docs packageName=terraform-docs/terraform-docs
 Version:        0.20.0
 Release:        1%{?dist}
 Summary:        Generate documentation from Terraform modules
 
 License:        MIT
 URL:            https://github.com/terraform-docs/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  git-core >= 2.0
-BuildRequires:  golang >= 1.24
-BuildRequires:  make
+Source0:        %{url}/releases/download/v%{version}/%{name}-v%{version}-linux-amd64.tar.gz
+ExclusiveArch:  x86_64
 
 %description
 Generate documentation from Terraform modules in various output formats
 
 
 %prep
-%autosetup
-
-
-%build
-go build -o bin/%{name}
+%setup -q -c
 
 
 %install
-install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 %{SOURCE0} %{buildroot}/%{_bindir}/%{name}
 
 
 %files
-%license LICENSE
-%doc README.md docs/
 %{_bindir}/%{name}
 
 

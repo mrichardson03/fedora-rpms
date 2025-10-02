@@ -1,38 +1,30 @@
+%global debug_package %{nil}
+
 Name:           tflint
+# renovate: datasource=github-releases depName=tflint packageName=terraform-linters/tflint
 Version:        0.58.1
 Release:        1%{?dist}
 Summary:        A pluggable Terraform linter
 
 License:        MPL
 URL:            https://github.com/terraform-linters/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  git-core >= 2.0
-BuildRequires:  golang >= 1.24
-BuildRequires:  make
+Source0:        %{url}/releases/download/v%{version}/%{name}_linux_amd64.zip
+ExclusiveArch:  x86_64
 
 %description
 A pluggable Terraform linter
 
-%global debug_package %{nil}
-
 %prep
-%autosetup
-
-
-%build
-%make_build
+%setup -q -c -T
 
 
 %install
-install -Dpm 0755 dist/%{name} %{buildroot}%{_bindir}/%{name}
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 %{SOURCE0} %{buildroot}/%{_bindir}/%{name}
 
 
 %files
-%license LICENSE
-%doc docs/
 %{_bindir}/%{name}
-
 
 
 %changelog

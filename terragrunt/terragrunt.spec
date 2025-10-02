@@ -1,11 +1,15 @@
+%global debug_package %{nil}
+
 Name:           terragrunt
+# renovate: datasource=github-releases depName=terragrunt packageName=gruntwork-io/terragrunt
 Version:        0.85.1
 Release:        1%{?dist}
 Summary:        Terraform/OpenTofu IaC orchestration tool 
 
 License:        MIT
 URL:            https://github.com/gruntwork-io/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/v%{version}/%{name}_linux_amd64
+ExclusiveArch:  x86_64
 
 BuildRequires:  git-core >= 2.0
 BuildRequires:  golang >= 1.24
@@ -16,24 +20,15 @@ Terraform/OpenTofu IaC orchestration tool
 %global debug_package %{nil}
 
 %prep
-%autosetup
-
-
-%build
-go get
-go build -o %{name} -ldflags "-s -w -X github.com/gruntwork-io/go-commons/version.Version=%{version} -extldflags '-static'" .
+%setup -q -T -c
 
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
-
-install -Dpm 0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -m 755 %{SOURCE0} %{buildroot}%{_bindir}/%{name}
 
 %files
-%license LICENSE.txt
 %{_bindir}/%{name}
-%doc README.md SECURITY.md
-
 
 
 %changelog

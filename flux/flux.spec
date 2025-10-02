@@ -1,35 +1,28 @@
 %global debug_package %{nil}
 
 Name:           flux
+# renovate: datasource=github-releases depName=flux packageName=fluxcd/flux2
 Version:        2.6.4
 Release:        1%{?dist}
 Summary:        Continuous delivery solution for Kubernetes
 
 License:        Apache-2.0
 URL:            https://github.com/fluxcd/flux2
-Source0:        %{url}/archive/v%{version}/flux2-%{version}.tar.gz
-
-BuildRequires:  git-core >= 2.0
-BuildRequires:  golang >= 1.24
-BuildRequires:  make kustomize
+Source0:        %{url}/releases/download/v%{version}/%{name}_%{version}_linux_amd64.tar.gz
+ExclusiveArch:  x86_64
 
 %description
 Continuous delivery solution for Kubernetes
 
 %prep
-%setup -qn flux2-%{version}
-
-
-%build
-VERSION=%{version} make build
+%setup -q -c
 
 
 %install
-install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 %{SOURCE0} %{buildroot}/%{_bindir}/%{name}
 
 %files
-%license LICENSE
-%doc README.md docs/
 %{_bindir}/%{name}
 
 

@@ -1,34 +1,27 @@
 %global debug_package %{nil}
 
 Name:           lazygit
+# renovate: datasource=github-releases depName=lazygit packageName=jesseduffield/lazygit
 Version:        0.55.1
 Release:        1%{?dist}
 Summary:        Simple terminal UI for git commands
 
 License:        MIT
 URL:            https://github.com/jesseduffield/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  git-core >= 2.0
-BuildRequires:  golang >= 1.24
-BuildRequires:  make
+Source0:        %{url}/releases/download/v%{version}/%{name}_%{version}_linux_x86_64.tar.gz
 
 %description
 A simple terminal UI for git commands
 
 
 %prep
-%autosetup
-
-%build
-%make_build
+%setup -q -c
 
 %install
-install -Dpm 0755 %{name} %{buildroot}%{_bindir}/%{name}
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 %{SOURCE0} %{buildroot}/%{_bindir}/%{name}
 
 %files
-%license LICENSE
-%doc docs/
 %{_bindir}/%{name}
 
 
