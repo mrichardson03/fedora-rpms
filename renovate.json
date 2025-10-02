@@ -10,7 +10,7 @@
         "/\\.spec$/"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) packageName=(?<packageName>.*?)\\s*Version:\\s*(?<currentValue>[\\w+\\.\\-]*)",
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) packageName=(?<packageName>.*?)\\s*Version:\\s*(?<currentValue>[\\w+\\.\\-]*)"
       ]
     }
   ]
