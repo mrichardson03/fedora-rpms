@@ -9,6 +9,7 @@ Summary:        Simple terminal UI for git commands
 License:        MIT
 URL:            https://github.com/jesseduffield/%{name}
 Source0:        %{url}/releases/download/v%{version}/%{name}_%{version}_linux_x86_64.tar.gz
+ExclusiveArch:  x86_64
 
 %description
 A simple terminal UI for git commands
