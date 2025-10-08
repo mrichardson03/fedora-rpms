@@ -2,7 +2,7 @@
 
 Name:           flux
 # renovate: datasource=github-releases depName=flux packageName=fluxcd/flux2
-Version:        2.7.0
+Version:        2.7.1
 Release:        1%{?dist}
 Summary:        Continuous delivery solution for Kubernetes
 
