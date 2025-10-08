@@ -20,7 +20,7 @@ Continuous delivery solution for Kubernetes
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
-install -m 755 %{SOURCE0} %{buildroot}/%{_bindir}/%{name}
+install -m 755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %{_bindir}/%{name}
