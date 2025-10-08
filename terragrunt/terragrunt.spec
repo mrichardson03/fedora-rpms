@@ -2,7 +2,7 @@
 
 Name:           terragrunt
 # renovate: datasource=github-releases depName=terragrunt packageName=gruntwork-io/terragrunt
-Version:        0.88.1
+Version:        0.89.2
 Release:        1%{?dist}
 Summary:        Terraform/OpenTofu IaC orchestration tool 
 
