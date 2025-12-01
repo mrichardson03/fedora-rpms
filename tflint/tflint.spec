@@ -2,7 +2,7 @@
 
 Name:           tflint
 # renovate: datasource=github-releases depName=tflint packageName=terraform-linters/tflint
-Version:        0.59.1
+Version:        0.60.0
 Release:        1%{?dist}
 Summary:        A pluggable Terraform linter
 
