@@ -2,7 +2,7 @@
 
 Name:           terraform-docs
 # renovate: datasource=github-releases depName=terraform-docs packageName=terraform-docs/terraform-docs
-Version:        0.20.0
+Version:        0.21.0
 Release:        1%{?dist}
 Summary:        Generate documentation from Terraform modules
 
